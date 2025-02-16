@@ -1618,6 +1618,22 @@ void F3DStarter::AddCommands()
     return f3d::options::parse<bool>(args[0]);
   };
 
+  interactor.addCommand("remove_file_groups", 
+      [this](const std::vector<std::string>& args)
+      {
+          this->Internals->FilesGroups.clear();// clear loaded files
+          this->Internals->LoadedFiles.clear();
+
+          f3d::scene& scene = this->Internals->Engine->getScene(); // clear the scene
+          scene.clear();
+
+          f3d::window& window = this->Internals->Engine->getWindow(); // reset the window name
+          window.setWindowName(F3D::AppTitle).setIcon(F3DIcon, sizeof(F3DIcon)); // found on line 901 for resetting name & icon
+
+          f3d::options& options = this->Internals->Engine->getOptions();
+          options.ui.dropzone = true; // show the prompt to drag files in to open them in f3d
+      });
+
   interactor.addCommand("load_previous_file_group",
     [this](const std::vector<std::string>& args)
     {

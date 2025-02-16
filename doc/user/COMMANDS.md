@@ -70,6 +70,8 @@ The F3D application provides a few more commands.
 
 `reload_current_file_group`: A specific command to reload the current file or file group. No argument.
 
+`remove_file_groups`: A specific command to remove all open file groups in F3D. No argument.
+
 `add_current_directories`: A specific command to add all files from the current file or file group directories. No argument.
 
 `take_screenshot [filename]`: A specific command to [take a screenshot](INTERACTIONS.md#taking-screenshots). If filename is not specified,
